@@ -11,14 +11,14 @@ Character.prototype = {
     return this.health > 0;
   },
   _takeDamage: function (damage) {
-    this.health = damage;
+    this.health -= damage;
     if (this.health < 0) {
       this.health = 0;
     }
   },
-  heal: function (health) {
+  _heal: function (health) {
     this.health += health;
-    if (this.health < this.maxHealth) {
+    if (this.health > this.maxHealth) {
       this.health = this.maxHealth;
     }
   },
