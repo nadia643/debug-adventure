@@ -1,9 +1,9 @@
 /* eslint-disable func-names */
-const Character = require('../character');
+const Character = require('../src/character');
 
 function Player(config) {
   Character.call(this, config);
-  this.equippedWeapon = null;
+  this.equippedWeapon = config.equippedWeapon;
 }
 
 Player.prototype = Object.create(Character.prototype);
@@ -15,7 +15,7 @@ Object.defineProperty(Player.prototype, 'constructor', {
 });
 
 Player.prototype._describeAttack = function () {
-  return `${this.name} lets out a ${this.dialogue}, and hits ${target.name} with ${this.equippedWeapon.name} for ${this.equippedWeapon.damage} damage!`;
+  return `${this.name} lets out a ${this.dialogue}, and hits ${this.target.name} with ${this.equippedWeapon.name} for ${this.equippedWeapon.damage} damage!`;
 };
 
 Player.prototype.equip = function (weapon) {
